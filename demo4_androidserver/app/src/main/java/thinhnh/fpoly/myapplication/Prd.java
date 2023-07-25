@@ -1,15 +1,24 @@
 package thinhnh.fpoly.myapplication;
 
 public class Prd {
-    private String tensp,giasp,soluong;
+    private String  Idsp, tensp,giasp,soluong;
 
     public Prd() {
     }
 
-    public Prd(String tensp, String giasp, String soluong) {
+    public Prd(String idsp, String tensp, String giasp, String soluong) {
+        Idsp = idsp;
         this.tensp = tensp;
         this.giasp = giasp;
         this.soluong = soluong;
+    }
+
+    public String getIdsp() {
+        return Idsp;
+    }
+
+    public void setIdsp(String idsp) {
+        Idsp = idsp;
     }
 
     public String getTensp() {

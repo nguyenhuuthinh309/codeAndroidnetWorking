@@ -18,23 +18,43 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    EditText txt1,txt2,txt3;
-    Button btnInsert,btnGet;
+    EditText txt0, txt1,txt2,txt3;
+    Button btnInsert,btnGet,btnupdate, btndelete;
     TextView tvKQ;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        txt0 = findViewById(R.id.id);
         txt1=findViewById(R.id.demo41Txt1);
         txt2=findViewById(R.id.demo41Txt2);
         txt3=findViewById(R.id.demo41Txt3);
         btnInsert=findViewById(R.id.demo41Btn1);
         btnGet=findViewById(R.id.demo41Btn2);
         tvKQ=findViewById(R.id.demo41TvKQ);
+        btndelete=findViewById(R.id.btndelete);
+        btndelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteData();
+            }
+
+
+        });
+        btnupdate=findViewById(R.id.btnupdate);
+        btnupdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateData();
+            }
+        });
+
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                kq="";
                 selectData();
             }
         });
@@ -49,6 +69,59 @@ public class MainActivity extends AppCompatActivity {
     String kq="";//chuoi ket qua
     ArrayList<Prd> ls;//tao list prd
     Prd prd=new Prd();//tao doi tuong prd
+    private void updateData() {
+        Prd p = new Prd();
+        p.setIdsp(txt0.getText().toString());
+        p.setTensp(txt1.getText().toString());
+        p.setGiasp(txt2.getText().toString());
+        p.setSoluong(txt3.getText().toString());
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://nguyenhuuthinh309.000webhostapp.com/demo4_serverandroid/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        InterfaceUpdate interfaceUpdate = retrofit.create(InterfaceUpdate.class);
+        Call<SvrResponseUpdate> call = interfaceUpdate.updatedata(p.getIdsp(),p.getTensp(),p.getGiasp(),p.getSoluong());
+        call.enqueue(new Callback<SvrResponseUpdate>() {
+            @Override
+            public void onResponse(Call<SvrResponseUpdate> call, Response<SvrResponseUpdate> response) {
+                SvrResponseUpdate svrResponseUpdate = response.body();
+                tvKQ.setText(svrResponseUpdate.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<SvrResponseUpdate> call, Throwable t) {
+           tvKQ.setText(t.getMessage());
+            }
+        });
+
+    }
+
+    private void deleteData() {
+        Prd p = new Prd();
+        p.setIdsp(txt0.getText().toString());
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://nguyenhuuthinh309.000webhostapp.com/demo4_serverandroid/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        InterfaceDelete interfaceDelete = retrofit.create(InterfaceDelete.class);
+        Call<SvrResponseDelete> call = interfaceDelete.delete(p.getIdsp());
+        call.enqueue(new Callback<SvrResponseDelete>() {
+            @Override
+            public void onResponse(Call<SvrResponseDelete> call, Response<SvrResponseDelete> response) {
+                SvrResponseDelete svrResponseDelete = response.body(); // lay kq tu serrverr
+                tvKQ.setText((svrResponseDelete.getMessage()));// dua kq len man hinh
+            }
+
+            @Override
+            public void onFailure(Call<SvrResponseDelete> call, Throwable t) {
+           tvKQ.setText(t.getMessage()); // dua ra loi
+            }
+        });
+    }
+
+
     void insertData()
     {
         //B0. Dua du lieu vao doi tuong
@@ -98,10 +171,11 @@ public class MainActivity extends AppCompatActivity {
                 ls=new ArrayList<>(Arrays.asList(svrResponseSelect.getBangTest()));//chuyen du lieu sang list
                 for(Prd p: ls)//cho vao vong for de doc tung doi tuong
                 {
-                    kq +="Name: "+p.getTensp()+
+                    kq +="ID:"+p.getIdsp()+"; Name: "+p.getTensp()+
                             "; Price: "+p.getGiasp()+
                             "; Des: "+p.getSoluong()+"\n";
                 }
+
                 tvKQ.setText(kq);
             }
             //that bai
