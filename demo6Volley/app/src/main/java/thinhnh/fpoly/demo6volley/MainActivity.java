@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -35,9 +36,11 @@ public class MainActivity extends AppCompatActivity {
         tvKQ=findViewById(R.id.kq);
         btn1.setOnClickListener((view)->{
             getStringByVolley();
+            Toast.makeText(context, "btn1", Toast.LENGTH_SHORT).show();
         });
         btn2.setOnClickListener((view)->{
             getJSON_ObjectsOfArray();
+            Toast.makeText(context, "btn2", Toast.LENGTH_SHORT).show();
         });
     }
     String strKQ="";
