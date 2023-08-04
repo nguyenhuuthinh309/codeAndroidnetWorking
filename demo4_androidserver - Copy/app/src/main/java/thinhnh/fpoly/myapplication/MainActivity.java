@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     void selectData(){
         //b1. tao doi tuong retrofit
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://localhost:3000/apipostman/")
+                .baseUrl("http://10.24.18.51:3000/apipostman/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //b2. Goi interface, chuan bi ham va goi ham
