@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         btnupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateData();
+                kq="";
+                selectData1();
             }
         });
 
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
     }
     String kq="";//chuoi ket qua
     ArrayList<Prd> ls;//tao list prd
+    ArrayList<HD> ls1;//tao list prd
+    HD hoaDon = new HD();
     Prd prd=new Prd();//tao doi tuong prd
     private void updateData() {
         Prd p = new Prd();
@@ -150,6 +153,39 @@ public class MainActivity extends AppCompatActivity {
             //that bai
             @Override
             public void onFailure(Call<SvrResponseInsert> call, Throwable t) {
+                tvKQ.setText(t.getMessage());//in ra thong bao loi
+            }
+        });
+    }
+
+    void selectData1(){
+        //b1. tao doi tuong retrofit
+        Retrofit retrofit=new Retrofit.Builder()
+                .baseUrl(" http://192.168.16.102:3000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        //b2. Goi interface, chuan bi ham va goi ham
+        InterfaceSelect1 interfaceSelect=retrofit.create(InterfaceSelect1.class);
+        Call<SvrResponseSelect1> call=interfaceSelect.getPrd();
+        call.enqueue(new Callback<SvrResponseSelect1>() {
+            //thanh cong
+            @Override
+            public void onResponse(Call<SvrResponseSelect1> call, Response<SvrResponseSelect1> response) {
+                SvrResponseSelect1 svrResponseSelect=response.body();//lay ket qua server tra ve
+                ls1=new ArrayList<>(Arrays.asList(svrResponseSelect.getHoaDon()));//chuyen du lieu sang list
+                for(HD p: ls1)//cho vao vong for de doc tung doi tuong
+                {
+                    kq +="ID:"+p.getKhunggio()+"; Name: "+p.getNgaythue()+
+                            "; Price: "+p.getTenkhach()
+                            +
+                            "; Des: "+p.getSdt()+"\n";
+                }
+
+                tvKQ.setText(kq);
+            }
+            //that bai
+            @Override
+            public void onFailure(Call<SvrResponseSelect1> call, Throwable t) {
                 tvKQ.setText(t.getMessage());//in ra thong bao loi
             }
         });
