@@ -15,27 +15,39 @@
      <h3>{{title1}}</h3>
 
 
-<form action="/user/add" method="post" autocomplete="off">
+<form action="/product/add" method="post" autocomplete="off">
  <input type="hidden" name="id" value="{{result.id}}">
 
 <div class="form-group">
-    <label for="">Email</label>
-    <input type="text" name="email" class="form-control" placeholder="Email" value="{{result.email}}">
+    <label for="">Tên Khách</label>
+    <input type="text" name="tenkhach" class="form-control" placeholder="tenkhach" value="{{result.tenkhach}}">
     </div>
     <div class="form-group">
-    <label for="">Password</label>
-     <input value="{{result.mk}}" class="form-control" type="mk" name="mk" placeholder="mk">
+    <label for="">SĐT</label>
+     <input value="{{result.sdt}}" class="form-control" type="sdt" name="sdt" placeholder="sdt">
 </div>
  <div class="form-group">
-    <label for="">Tên Sân</label>
-     <input value="{{result.tensan}}" class="form-control" type="tensan" name="tensan" placeholder="tensan">
+    <label for="">ngày Thuê</label>
+     <input value="{{result.ngaythue}}" class="form-control" type="ngaythue" name="ngaythue" placeholder="ngaythue">
+</div>
+ <div class="form-group">
+    <label for="">Khung Giờ</label>
+     <input value="{{result.khunggio}}" class="form-control" type="khunggio" name="khunggio" placeholder="khunggio">
+</div>
+ <div class="form-group">
+    <label for="">Tổng Tiền</label>
+     <input value="{{result.tongtien}}" class="form-control" type="tongtien" name="tongtien" placeholder="tongtien">
+</div>
+ <div class="form-group">
+    <label for="">Trạng Thái</label>
+     <input value="{{result.trangthai}}" class="form-control" type="trangthai" name="trangthai" placeholder="trangthai">
 </div>
 <br>
 <br>
  <br><br>
  <div class="form-group">
     <button type="submit" class="btn btn-info">submit</button>
-        <a href="/user/list" class="btn btn-primary">view tài khoản</a>
+        <a href="/product/list" class="btn btn-primary">view tài khoản</a>
  </div>
 </form>
     </div>

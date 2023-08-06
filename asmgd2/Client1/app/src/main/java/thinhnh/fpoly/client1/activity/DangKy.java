@@ -73,7 +73,7 @@ public class DangKy extends AppCompatActivity {
         prd.setMk(dkmatkhau.getText().toString());
         //B1. Tao doi tuong retrofit
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.16.102:3000/")
+                .baseUrl("http://192.168.1.7:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //b2. Chuan bi ham va thuc thi ham

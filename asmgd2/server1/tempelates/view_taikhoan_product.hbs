@@ -17,25 +17,33 @@
     <div class="col-sm-8 ofset-sm-2" style="background-color: #FFFFFF; margin-top 50px: padding:20px" >
 
 
-<a href="/user" class="btn btn-primary ">ADD tài khoản</a>
+<a href="/product" class="btn btn-primary ">ADD tài khoản</a>
 <table class=" table table-bordered">
     <tr>
         <th>ID</th>
-        <th>EMAIL</th>
-         <th>PASS</th>
-          <th>TÊN SÂN</th>
+        <th>Tên Khách</th>
+         <th>Số Điện Thoại</th>
+          <th>Ngày Thuê</th>
+          <th>Khung Giờ</th>
+          <th>Tổng Tiền </th>
+          <th>TRạng Thái</th>
+        
     </tr>
     
     {{#each taikhoan}}
      <tr>
         <td>{{this.id}}</td>
-        <td>{{this.email}}</td>
-        <td>{{this.mk}}</td>
-        <td>{{this.tensan}}</td>
+        <td>{{this.tenkhach}}</td>
+        <td>{{this.sdt}}</td>
+        <td>{{this.ngaythue}}</td>
+          <td>{{this.khunggio}}</td>
+        <td>{{this.tongtien}}</td>
+        <td>{{this.trangthai}}</td>
+
       
-        <td><a href="/user/del/{{this.id}}" class="btn btn-primary btn-sm"
+        <td><a href="/product/del/{{this.id}}" class="btn btn-primary btn-sm"
         onclick="return confirm("xóa?")">DEL</a>
-        <a href="/user/edit/{{this.id}}" class="btn btn-primary btn-sm">Edit</a></td>
+        <a href="/product/edit/{{this.id}}" class="btn btn-primary btn-sm">Edit</a></td>
     </tr>
     {{/each}}
 

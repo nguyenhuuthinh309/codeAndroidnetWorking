@@ -108,6 +108,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<UserAmin>> call, Response<List<UserAmin>> response) {
 userAminList = response.body();
+
                 Toast.makeText(Login.this, "Call api thanh cong", Toast.LENGTH_SHORT).show();
             }
 

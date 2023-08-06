@@ -3,7 +3,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface InterfaceSelect {
-    @GET("list")
+    @GET("product/select")
     Call<SvrResponseSelect> getPrd();
 }
 

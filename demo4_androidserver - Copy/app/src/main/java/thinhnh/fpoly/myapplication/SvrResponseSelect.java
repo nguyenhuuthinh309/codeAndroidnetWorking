@@ -1,11 +1,11 @@
 package thinhnh.fpoly.myapplication;
 
 public class SvrResponseSelect {
-    private Prd[] nhanviens;
+    private Prd[] HoaDon;
     private String message;
 
-    public Prd[] getNhanviens() {
-        return nhanviens;
+    public Prd[] getHoaDon() {
+        return HoaDon;
     }
 
     public String getMessage() {

@@ -9,18 +9,16 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import thinhnh.fpoly.client1.DTO.HD;
 import thinhnh.fpoly.client1.DTO.UserAmin;
 
-public interface ApiLogin {
-
+public interface ApiSelectProduct {
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
-    ApiLogin apilogin = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.7:3000/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .build()
-            .create(ApiLogin.class);
 
-    @GET("user/select")
-    Call<List<UserAmin>> getListUserAmin ();
+    ApiSelectProduct apiselectpeoduct = new Retrofit.Builder().baseUrl("http://192.168.1.7:3000/").addConverterFactory(GsonConverterFactory.create(gson))
+            .build().create(ApiSelectProduct.class);
+
+    @GET("product/select")
+    Call<List<HD>> getListProduct ();
 }
