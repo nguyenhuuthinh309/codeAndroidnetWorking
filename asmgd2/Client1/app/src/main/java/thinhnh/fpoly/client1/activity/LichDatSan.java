@@ -52,7 +52,8 @@ public class LichDatSan extends AppCompatActivity {
         floatCs = (FloatingActionButton) findViewById(R.id.float_cs);
 //
 
-getListProduct();
+
+loadata();
 
         floatCs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,35 +64,35 @@ getListProduct();
         });
     }
     String kq="";//chuoi ket qua
-    private void getListProduct(){
-        ApiSelectProduct.apiselectpeoduct.getListProduct().enqueue(new Callback<List<HD>>() {
-            @Override
-            public void onResponse(Call<List<HD>> call, Response<List<HD>> response) {
-                productList = response.body();
 
-                for(HD p: productList)//cho vao vong for de doc tung doi tuong
-                {
+        public void getListProduct () {
+            ApiSelectProduct.apiselectpeoduct.getListProduct().enqueue(new Callback<List<HD>>() {
+                @Override
+                public void onResponse(Call<List<HD>> call, Response<List<HD>> response) {
+                    productList = response.body();
+                    for (HD p : productList)//cho vao vong for de doc tung doi tuong
+                    {
 
-
-                    hoadonAdapter  = new HoadonAdapter(getBaseContext());
-                    hoadonAdapter.setdata(productList);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext(),LinearLayoutManager.VERTICAL,false);
-                    lisCs.setLayoutManager(linearLayoutManager);
-                    lisCs.setAdapter(hoadonAdapter);
+                        hoadonAdapter = new HoadonAdapter(LichDatSan.this);
+                        hoadonAdapter.setdata(productList);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
+                        lisCs.setLayoutManager(linearLayoutManager);
+                        lisCs.setAdapter(hoadonAdapter);
+                    }
                 }
 
+                @Override
+                public void onFailure(Call<List<HD>> call, Throwable t) {
+                    Toast.makeText(LichDatSan.this, "Call api erro", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
+public  void loadata(){
 
-            }
-
-            @Override
-            public void onFailure(Call<List<HD>> call, Throwable t) {
-                Toast.makeText(LichDatSan.this, "Call api erro", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-
-
+    getListProduct();
 
 }
+
+
+    }

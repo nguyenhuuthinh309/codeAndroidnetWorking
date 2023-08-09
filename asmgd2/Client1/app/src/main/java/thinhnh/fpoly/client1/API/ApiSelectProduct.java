@@ -16,7 +16,7 @@ public interface ApiSelectProduct {
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
 
-    ApiSelectProduct apiselectpeoduct = new Retrofit.Builder().baseUrl("http://192.168.1.7:3000/").addConverterFactory(GsonConverterFactory.create(gson))
+    ApiSelectProduct apiselectpeoduct = new Retrofit.Builder().baseUrl("http://192.168.16.102:3000/").addConverterFactory(GsonConverterFactory.create(gson))
             .build().create(ApiSelectProduct.class);
 
     @GET("product/select")

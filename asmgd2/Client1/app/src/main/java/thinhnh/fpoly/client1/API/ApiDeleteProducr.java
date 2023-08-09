@@ -9,5 +9,5 @@ import thinhnh.fpoly.client1.Reponse.DeleteProduct;
 public interface ApiDeleteProducr {
     @FormUrlEncoded
     @POST("product/del/:id")
-    Call<DeleteProduct> deleteProduct(@Field("id")String id);
+    Call<DeleteProduct> deleteProduct(@Field("id")int id);
 }

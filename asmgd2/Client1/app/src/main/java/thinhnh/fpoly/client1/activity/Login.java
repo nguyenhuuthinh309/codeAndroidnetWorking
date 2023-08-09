@@ -86,7 +86,7 @@ public class Login extends AppCompatActivity {
 
                     bundle.putSerializable("obj_userAdmin",MuserAmin);
                     intent.putExtras(bundle);
-                    Toast.makeText(Login.this, "VAO", Toast.LENGTH_SHORT).show();
+
                     startActivity(intent);
                 }else{
                     Toast.makeText(Login.this, "sai tk hoặc mk", Toast.LENGTH_SHORT).show();

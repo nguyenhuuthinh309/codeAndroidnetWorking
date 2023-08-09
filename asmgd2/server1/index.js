@@ -307,10 +307,12 @@ app.get('/user/select', function(req, res){
                 });
 
                 app.post("/product/del/:id", (req, res) => {
+
+                    const id = req.body.id;
   
 
-                    con.query("DELETE FROM HoaDon WHERE id ="+req.params.id,(err,result,fields)=>{
-                     if(!req.params.id)    res.json({ status: 1, msg: 'không tìm thấy user xóa' });
+                    con.query("DELETE FROM HoaDon WHERE id =?",id,(err,result,fields)=>{
+                     if(!req.body.id)    res.json({ status: 1, msg: 'không tìm thấy user xóa' });
                      else{
                         res.json({ status: 1, msg: 'xóa thành công' });
                      }

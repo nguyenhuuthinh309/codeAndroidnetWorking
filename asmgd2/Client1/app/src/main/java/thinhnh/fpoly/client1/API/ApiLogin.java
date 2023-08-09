@@ -16,7 +16,7 @@ public interface ApiLogin {
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     ApiLogin apilogin = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.7:3000/")
+            .baseUrl("http://192.168.16.102:3000/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiLogin.class);

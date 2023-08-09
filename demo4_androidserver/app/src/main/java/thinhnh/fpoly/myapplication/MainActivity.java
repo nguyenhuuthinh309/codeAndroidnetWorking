@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
     void selectData1(){
         //b1. tao doi tuong retrofit
         Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl(" http://192.168.1.7:3000/")
+                .baseUrl(" http://10.24.38.241:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         //b2. Goi interface, chuan bi ham va goi ham

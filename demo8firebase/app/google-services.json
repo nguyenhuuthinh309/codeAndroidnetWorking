@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1070551910274",
+    "project_id": "fir-androidnetworking-50840",
+    "storage_bucket": "fir-androidnetworking-50840.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1070551910274:android:d0b63467deb8417b65319b",
+        "android_client_info": {
+          "package_name": "thinhnh.fpoly.demo8firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1070551910274-9ts308j9mjllvcdktqsbhh5vgdh0ctlk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzus8tF7hIdF9stWbyoGmrOpdvvsJVPXA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1070551910274-9ts308j9mjllvcdktqsbhh5vgdh0ctlk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
